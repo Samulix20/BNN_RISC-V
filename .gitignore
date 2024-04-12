@@ -1,0 +1,21 @@
+# IDE config folder
+.vscode
+
+# Output files
+build
+work
+waves
+log
+
+# Log files
+*.log
+
+# Asm dump
+*.dump
+
+# Pycache and env
+__pycache__
+pyenv
+
+# Temp files
+tmp
