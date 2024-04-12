@@ -1,0 +1,48 @@
+OUTPUT_ARCH( "riscv" )
+ENTRY( _start )
+
+MEMORY
+{
+	ram (wxa) : ORIGIN = 0x00000000, LENGTH = MEM_SIZE
+}
+
+SECTIONS
+{
+	.init : { *(.init) } >ram
+	.text : { *(.text) } >ram
+	.rodata : { *(.rodata) } >ram
+
+	.data : { 
+		*(.data) 
+	} >ram
+
+	. = ALIGN(16);
+  	_gp = . + 0x800;
+
+	.sdata : { 
+		*(.sdata)
+	} >ram
+
+	.sbss : { 
+		. = ALIGN(16);
+		_sbss_start = .;
+		*(.sbss) 
+		. = ALIGN(16);
+		_sbss_end = .;
+	} >ram
+	
+	.bss : { 
+		. = ALIGN(16);
+		_bss_start = .;
+		*(.bss)
+		. = ALIGN(16);
+		_bss_end = .;
+	} >ram
+
+	.stack :
+	{
+		. = ALIGN(16);
+		. += STACK_SIZE;
+		_stack_top = .;
+	} >ram
+}

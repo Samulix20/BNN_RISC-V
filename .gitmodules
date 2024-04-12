@@ -1,0 +1,3 @@
+[submodule "ext/BNN_for_hyperspectral_datasets_analysis"]
+	path = ext/BNN_for_hyperspectral_datasets_analysis
+	url = https://github.com/universidad-zaragoza/BNN_for_hyperspectral_datasets_analysis.git
